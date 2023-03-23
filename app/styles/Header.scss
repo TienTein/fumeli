@@ -1,0 +1,15 @@
+.navbar {
+    .nav-icons {
+        & > * {
+            margin-right: 25px;
+        }
+    }
+
+    .nav-link {
+        .nav-link-l {
+            & > * {
+                margin-right: 10px;
+            }
+        }
+    }
+}

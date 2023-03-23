@@ -1,0 +1,8 @@
+.bg-top-star {
+    background-image: linear-gradient(to right, #ff2423 50%, #420000 97%);
+    transform: translateX(50%);
+    transition: all 0.5s;
+    &:hover {
+        transform: translateX(0);
+    }
+}
