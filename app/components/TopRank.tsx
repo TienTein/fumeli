@@ -6,7 +6,7 @@ import firstTop from "../../public/images/1ST 1.png";
 import secondTop from "../../public/images/2ND 1.png";
 import thirdTop from "../../public/images/3RD 1.png";
 import "../styles/TopStar.scss";
-import { useState } from "react";
+import React, { useState } from "react";
 
 export default function TopRank() {
   const [show, setShow] = useState(false);
@@ -82,7 +82,7 @@ export default function TopRank() {
         <h1 className="uppercase">bảng xếp hạng</h1>
         {topDatas &&
           topDatas.map((data, index) => (
-            <>
+            <React.Fragment key={index}>
               <div
                 className="w-full h-14 bg-[#252525] grid grid-cols-2 gap-2"
                 key={index}
@@ -110,7 +110,7 @@ export default function TopRank() {
                   </div>
                 )}
               </div>
-            </>
+            </React.Fragment>
           ))}
       </div>
     </div>

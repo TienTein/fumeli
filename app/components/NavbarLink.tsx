@@ -1,6 +1,25 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export default function NavbarLink() {
+  const [active, setActive] = useState(false);
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const open = Boolean(anchorEl);
+
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget as HTMLElement);
+    setActive(true);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+    setActive(false);
+  };
   return (
     <div className="flex md:order-2 w-full justify-between nav-link py-4">
       <div className="flex justify-between nav-link-l">
@@ -12,26 +31,20 @@ export default function NavbarLink() {
           Giới thiệu
         </Link>
 
-        <button
-          id="mega-menu-dropdown-button"
-          data-dropdown-toggle="mega-menu-dropdown"
-          className="flex items-center justify-between text-white"
+        <Button
+          variant="contained"
+          onClick={handleClick}
+          endIcon={<KeyboardArrowDownIcon />}
+          className={`${
+            active ? "text-[#FF2423]" : ""
+          } hover:bg-transparent [&>span]:m-0`}
         >
           Nhiệm vụ
-          <svg
-            aria-hidden="true"
-            className="w-5 h-5 ml-1 md:w-4 md:h-4"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            ></path>
-          </svg>
-        </button>
+        </Button>
+        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+          <MenuItem onClick={handleClose}>Điểm danh hàng ngày</MenuItem>
+          <MenuItem onClick={handleClose}>Mời bạn nhận quà</MenuItem>
+        </Menu>
 
         <Link
           href="#"
