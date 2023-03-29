@@ -6,7 +6,7 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
-export default function NavbarLink() {
+export default function NavbarLink({ isMatchLG }: { isMatchLG: boolean }) {
   const [active, setActive] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -21,8 +21,16 @@ export default function NavbarLink() {
     setActive(false);
   };
   return (
-    <div className="flex md:order-2 w-full justify-between nav-link py-4">
-      <div className="flex justify-between nav-link-l">
+    <div
+      className={`flex md:order-2 w-full nav-link  ${
+        isMatchLG ? "py-2 justify-around" : "py-4 justify-between"
+      }`}
+    >
+      <div
+        className={`flex [&>a]:mr-2 [&>a:hover]:text-[#FF2423] ${
+          isMatchLG ? "w-full justify-around" : "justify-between"
+        }`}
+      >
         <Link
           href="#"
           className="block py-2 pl-3 pr-4 text-white"
@@ -37,13 +45,18 @@ export default function NavbarLink() {
           endIcon={<KeyboardArrowDownIcon />}
           className={`${
             active ? "text-[#FF2423]" : ""
-          } hover:bg-transparent [&>span]:m-0`}
+          } hover:bg-transparent [&>span]:m-0 hover:text-[#FF2423]`}
         >
           Nhiệm vụ
         </Button>
+
         <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          <MenuItem onClick={handleClose}>Điểm danh hàng ngày</MenuItem>
-          <MenuItem onClick={handleClose}>Mời bạn nhận quà</MenuItem>
+          <MenuItem className="hover:text-[#FF2423]" onClick={handleClose}>
+            Điểm danh hàng ngày
+          </MenuItem>
+          <MenuItem className="hover:text-[#FF2423]" onClick={handleClose}>
+            Mời bạn nhận quà
+          </MenuItem>
         </Menu>
 
         <Link
@@ -55,7 +68,11 @@ export default function NavbarLink() {
         </Link>
       </div>
 
-      <div className="flex justify-between nav-link-l">
+      <div
+        className={`flex  [&>a]:mr-2 [&>a:hover]:text-[#FF2423] ${
+          isMatchLG ? "w-full justify-around" : "justify-between"
+        }`}
+      >
         <Link
           href="#"
           className="block py-2 pl-3 pr-4 text-white"

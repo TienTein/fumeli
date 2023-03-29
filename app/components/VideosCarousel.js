@@ -1,7 +1,13 @@
 "use client";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import Slider from "react-slick";
 import Image from "next/image";
+import VideoModal from "./VideoModal";
+
+import gamer1 from "../../public/images/gamer1.jpg";
+import gamer2 from "../../public/images/gamer2.jpg";
+import gamer3 from "../../public/images/gamer3.jpg";
+import VideoPlayIcon from "../../public/images/videoPlayIcon.png";
 import NextArrow from "../../public/images/NextArrrow.png";
 import PrevArrow from "../../public/images/PreviosArrow.png";
 
@@ -10,7 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 function SampleNextArrow({ onClick }) {
   return (
-    <div className="w-fit arrow right-48">
+    <div className="arrow next-arrow">
       <Image src={NextArrow} alt="" onClick={onClick} />
     </div>
   );
@@ -18,43 +24,57 @@ function SampleNextArrow({ onClick }) {
 
 function SamplePrevArrow({ onClick }) {
   return (
-    <div className="w-fit arrow right-60">
+    <div className="arrow prev-arrow">
       <Image src={PrevArrow} alt="" onClick={onClick} />
     </div>
   );
 }
 
-export default function VideosCarousel() {
-  const videos = [
-    "https://www.youtube.com/embed/sk1Z-Hqwwog",
-    "https://www.youtube.com/embed/MRAisVL4K7Q",
-    "https://www.youtube.com/embed/b3GCfyNKeLs",
-    "https://www.youtube.com/embed/sk1Z-Hqwwog",
-    "https://www.youtube.com/embed/MRAisVL4K7Q",
-    "https://www.youtube.com/embed/b3GCfyNKeLs",
-  ];
+export default function VideosCarousel({ isMatchMD }) {
+  const images = [gamer1, gamer2, gamer3, gamer1, gamer2, gamer3];
 
   const [slideIndex, setSlideIndex] = useState(0);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = (e) => {
+    e.preventDefault();
+    setOpen(false);
+  };
 
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 3,
+    swipeToSlide: true,
+    slidesToShow: isMatchMD ? 1 : 3,
+    slidesToScroll: isMatchMD ? 1 : 3,
     beforeChange: (current, next) => setSlideIndex(next),
     nextArrow: <SampleNextArrow />,
     prevArrow: <SamplePrevArrow />,
   };
   return (
-    <div className="container">
+    <div className="w-full">
       <div className="slider">
         <Slider {...settings}>
-          {videos.map((vid, index) => (
-            <div className="slide" key={index}>
-              <iframe src={vid}></iframe>
-            </div>
+          {images.map((img, index) => (
+            <Fragment key={index}>
+              <div className="slide relative">
+                <Image
+                  src={img}
+                  alt=""
+                  className="w-full h-full"
+                  onClick={handleOpen}
+                />
+                <Image
+                  src={VideoPlayIcon}
+                  alt=""
+                  className="absolute top-0 right-0 left-0 bottom-0 m-auto opacity-0 play-video"
+                  onClick={handleOpen}
+                />
+              </div>
+            </Fragment>
           ))}
         </Slider>
+        <VideoModal open={open} handleClose={handleClose} />
       </div>
     </div>
   );
