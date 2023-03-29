@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import Navi from "../../public/images/Navi-logo 1.png";
 import G2 from "../../public/images/G2-logo.png";
@@ -5,47 +7,38 @@ import VS from "../../public/images/vs_finished 1.png";
 import nextArrow from "../../public/images/Vector.png";
 import "../styles/Matchs.scss";
 import Link from "next/link";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 export default function Matchs() {
+  const theme = useTheme();
+  const isMatchMD = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <div className="w-[80vw] h-[80vh] mx-auto text-white flex flex-col mb-20">
+    <div className="w-[80vw] h-fit mx-auto text-white flex flex-col mb-20">
       <h1 className="mb-6 text-5xl font-bold">Giải đấu</h1>
-      <div className="flex w-full justify-end match-kind">
-        <button>
-          <text className="z-10">ALL</text>
-          <div className="btn-active"></div>
-        </button>
+      <div
+        className={`flex w-full match-kind ${isMatchMD ? "" : "justify-end"}`}
+      >
+        <button>ALL</button>
         <p>/</p>
-        <button className="active">
-          <text>CS GO</text>
-          <div className="btn-active"></div>
-        </button>
+        <button className="active">CS GO</button>
         <p>/</p>
-        <button>
-          <text className="z-10">DOTA 2</text>
-          <div className="btn-active"></div>
-        </button>
+        <button>DOTA 2</button>
         <p>/</p>
-        <button>
-          <text className="z-10">FORTINE</text>
-          <div className="btn-active"></div>
-        </button>
+        <button>FORTINE</button>
         <p>/</p>
-        <button>
-          <text className="z-10">PUBG</text>
-          <div className="btn-active"></div>
-        </button>
+        <button>PUBG</button>
       </div>
+
       <div className="match">
         <div className="bg-match"></div>
         <div className="flex justify-around items-center z-10">
           <div className="match-ava">
-            <Image src={G2} alt="" className="h-2/2 w-2/3" />
+            <Image src={G2} alt="" />
             <p>G2</p>
           </div>
-          <Image src={VS} alt="" className="h-1/2 w-10" />
+          <Image src={VS} alt="" />
           <div className="match-ava">
-            <Image src={Navi} alt="" className="h-2/3 w-2/3" />
+            <Image src={Navi} alt="" />
             <p>Navi</p>
           </div>
         </div>
@@ -57,16 +50,17 @@ export default function Matchs() {
           Xem trận đấu <Image src={nextArrow} alt="" className="w-4 h-6 ml-4" />
         </Link>
       </div>
+
       <div className="match">
         <div className="bg-match"></div>
         <div className="flex justify-around items-center z-10">
           <div className="match-ava">
-            <Image src={G2} alt="" className="h-2/2 w-2/3" />
+            <Image src={G2} alt="" />
             <p>G2</p>
           </div>
-          <Image src={VS} alt="" className="h-1/2 w-10" />
+          <Image src={VS} alt="" />
           <div className="match-ava">
-            <Image src={Navi} alt="" className="h-2/3 w-2/3" />
+            <Image src={Navi} alt="" />
             <p>Navi</p>
           </div>
         </div>
@@ -78,16 +72,17 @@ export default function Matchs() {
           Xem trận đấu <Image src={nextArrow} alt="" className="w-4 h-6 ml-4" />
         </Link>
       </div>
+
       <div className="match">
         <div className="bg-match"></div>
         <div className="flex justify-around items-center z-10">
           <div className="match-ava">
-            <Image src={G2} alt="" className="h-2/2 w-2/3" />
+            <Image src={G2} alt="" />
             <p>G2</p>
           </div>
-          <Image src={VS} alt="" className="h-1/2 w-10" />
+          <Image src={VS} alt="" />
           <div className="match-ava">
-            <Image src={Navi} alt="" className="h-2/3 w-2/3" />
+            <Image src={Navi} alt="" />
             <p>Navi</p>
           </div>
         </div>

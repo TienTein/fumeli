@@ -10,12 +10,23 @@ import TwitterIcon from "@mui/icons-material/Twitter";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import EmailIcon from "@mui/icons-material/Email";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 export default function Footer() {
+  const theme = useTheme();
+  const isMatchMD = useMediaQuery(theme.breakpoints.down("md"));
   return (
-    <div className="w-full flex flex-col bg-black items-center text-white [&>*]:mb-8 py-10">
+    <div
+      className={`w-full flex flex-col bg-black px-[10%] text-white [&>*]:mb-8 py-10 ${
+        isMatchMD ? "items-start" : "items-center"
+      }`}
+    >
       <Image src={logo} alt="" />
-      <div className="uppercase [&>*]:mr-8">
+      <div
+        className={`uppercase [&>a:hover]:text-[#FF2423]  ${
+          isMatchMD ? "flex flex-col" : "[&>*]:mr-8"
+        }`}
+      >
         <Link href="#">giới thiệu</Link>
         <Link href="#">nhiệm vụ</Link>
         <Link href="#">giải đấu</Link>
@@ -29,7 +40,11 @@ export default function Footer() {
         <InstagramIcon className="text-black bg-white" />
         <TwitterIcon className="text-black bg-white" />
       </div>
-      <div className="grid grid-cols-4 gap-8 text-[13px]">
+      <div
+        className={` gap-8 text-[13px] ${
+          isMatchMD ? "[&>*]:mb-2" : "grid grid-cols-4"
+        }`}
+      >
         <div className="flex col-start-2 items-baseline">
           <LocationOnIcon className="mr-2 text-[14px]" />
           <p>
@@ -38,7 +53,7 @@ export default function Footer() {
             TP. HCM, VN
           </p>
         </div>
-        <div className="col-start-3 flex flex-col items-baseline">
+        <div className="col-start-3 flex flex-col items-baseline [&>*]:mb-2">
           <div className="flex">
             <LocalPhoneIcon className="mr-2 text-[14px]" />
             <p>

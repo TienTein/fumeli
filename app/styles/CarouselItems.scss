@@ -1,9 +1,16 @@
 .carousel {
     .slider {
-        width: 80%;
-        height: 350px;
-        margin-top: 23%;
+        width: 83%;
+        height: 50%;
+        position: absolute;
+        top: 75%;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        margin: auto;
+        z-index: 100;
         .slide {
+            pointer-events: none;
             width: 100%;
             height: 300px;
             scale: 0.7;
@@ -23,9 +30,71 @@
         position: absolute;
         z-index: 100;
         top: 27%;
+        width: fit-content;
         & > * {
             width: 35px;
             height: 50px;
+        }
+        &.arrow-next {
+            right: -6rem;
+        }
+        &.arrow-prev {
+            right: -2.5rem;
+        }
+    }
+}
+
+@media (max-width: 1350px) {
+    .carousel {
+        .slider {
+            width: 93%;
+        }
+
+        .arrow {
+            top: -10%;
+            &.arrow-next {
+                right: 0px;
+            }
+            &.arrow-prev {
+                right: 50px;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .carousel {
+        .slider {
+            width: 100%;
+            margin-left: -8px;
+        }
+
+        .arrow {
+            top: -30%;
+            &.arrow-next {
+                right: 50px;
+            }
+            &.arrow-prev {
+                right: 90px;
+            }
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .carousel {
+        .slider {
+            .slide {
+                height: 400px;
+            }
+
+            & img {
+                height: 400px;
+            }
+        }
+
+        .arrow {
+            display: none;
         }
     }
 }

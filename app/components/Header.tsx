@@ -28,8 +28,8 @@ import "../styles/Header.scss";
 
 export default function Header() {
   const theme = useTheme();
-  const isMatch = useMediaQuery(theme.breakpoints.down("md"));
-  const isMatch2 = useMediaQuery(theme.breakpoints.down("lg"));
+  const isMatchMD = useMediaQuery(theme.breakpoints.down("md"));
+  const isMatchLG = useMediaQuery(theme.breakpoints.down("lg"));
   const [active, setActive] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -59,10 +59,14 @@ export default function Header() {
   };
 
   return (
-    <AppBar className="bg-black flex h-fit relative flex-col navbar px-[20vh] min-h-[10vh]">
-      {!isMatch ? (
+    <AppBar
+      className={`bg-black flex h-fit relative flex-col navbar ${
+        isMatchLG ? "" : "px-[20vh]"
+      } min-h-[10vh]`}
+    >
+      {!isMatchMD ? (
         <>
-          {!isMatch2 ? (
+          {!isMatchLG ? (
             <>
               <div className="h-[130%] w-[15%] absolute left-0 right-0 top-0 bottom-0 m-auto z-10">
                 <Link href="/">
@@ -83,7 +87,11 @@ export default function Header() {
           ) : null}
 
           {/* auth menu */}
-          <div className="flex items-center md:order-2 w-full justify-between pt-2">
+          <div
+            className={`flex items-center md:order-2 w-full justify-between pt-2 ${
+              !isMatchLG ? "" : "px-[10px]"
+            }`}
+          >
             <div className="flex justify-between nav-icons px-3">
               <FacebookIcon className="text-white" />
               <YouTubeIcon className="text-white" />
@@ -132,7 +140,7 @@ export default function Header() {
             </div>
           </div>
 
-          <NavbarLink />
+          <NavbarLink isMatchLG={isMatchLG} />
         </>
       ) : (
         <DrawlerHeader />
