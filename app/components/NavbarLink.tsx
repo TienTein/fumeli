@@ -1,12 +1,15 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 
 export default function NavbarLink({ isMatchLG }: { isMatchLG: boolean }) {
+  const pathname = usePathname();
+
   const [active, setActive] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
@@ -32,8 +35,12 @@ export default function NavbarLink({ isMatchLG }: { isMatchLG: boolean }) {
         }`}
       >
         <Link
-          href="#"
-          className="block py-2 pl-3 pr-4 text-white"
+          href="/introduction"
+          className={`block py-2 pl-3 pr-4  ${
+            pathname === "/introduction"
+              ? "border-b-2 border-[#FF2423] text-[#FF2423]"
+              : "text-white"
+          } `}
           aria-current="page"
         >
           Giới thiệu

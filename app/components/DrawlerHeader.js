@@ -1,12 +1,15 @@
 "use client";
 import React, { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Drawer, IconButton } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 export default function DrawlerHeader() {
+  const pathname = usePathname();
+
   const [openDrawer, setOpenDrawer] = useState(false);
   const [openMissionMenu, setOpenMissionMenu] = useState(false);
   const handleOpenMissionMenu = () => {
@@ -19,10 +22,14 @@ export default function DrawlerHeader() {
         onClose={() => setOpenDrawer(false)}
         anchor="top"
       >
-        <div className="bg-black text-white px-[10vw] [&>*]:border-b-[#8B8B8B] [&>*]:border-b-[1px]  [&>*]:w-full [&>*]:py-[5px] py-[20px]">
+        <div className="bg-black text-white px-[10vw] [&>*]:border-b-[#8B8B8B] [&>*]:border-b-[1px] [&>*]:w-full [&>*]:py-[5px] py-[20px]">
           <Link
             href="/introduction"
-            className="block"
+            className={`block  ${
+              pathname === "/introduction"
+                ? "border-b-2 border-[#FF2423] text-[#FF2423]"
+                : ""
+            } `}
             aria-current="page"
             onClick={() => setOpenDrawer(false)}
           >

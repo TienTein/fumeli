@@ -1,14 +1,17 @@
 "use client";
 
-import React, { ChangeEvent, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
 import AuthModalInputs from "./AuthModalInputs";
 import Link from "next/link";
+import { useDispatch, useSelector } from "react-redux";
+import todoListSlice from "../logic/todoListSlice";
+import useAuth from "../../hooks/useAuth";
 
 const style = {
-  position: "absolute" as "absolute",
+  position: "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
@@ -19,10 +22,15 @@ const style = {
   p: 4,
 };
 
-export default function AuthModal({ isLogin }: { isLogin: boolean }) {
+export default function AuthModal() {
+  const dispatch = useDispatch();
   const [open, setOpen] = useState(false);
-  const [changeLogin, setChangeLogin] = useState(isLogin);
+  const [changeLogin, setChangeLogin] = useState(true);
   const [forgotPass, setForgotPass] = useState(false);
+  const [disable, setDisable] = useState(true);
+  const todoList = useSelector((state) => state.todoList);
+
+  const { signin } = useAuth();
 
   const handleOpen = () => {
     setChangeLogin(true);
@@ -32,7 +40,7 @@ export default function AuthModal({ isLogin }: { isLogin: boolean }) {
 
   const handleClose = () => setOpen(false);
 
-  const handleChangeInput = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChangeInput = (e) => {
     setInputs({
       ...inputs,
       [e.target.name]: e.target.value,
@@ -53,6 +61,40 @@ export default function AuthModal({ isLogin }: { isLogin: boolean }) {
     phone: "",
     referralCode: "",
   });
+
+  useEffect(() => {
+    if (changeLogin) {
+      if (inputs.userName && inputs.password) {
+        return setDisable(false);
+      }
+    } else if (forgotPass && inputs.email) {
+      return setDisable(false);
+    } else if (
+      inputs.userName &&
+      inputs.password &&
+      inputs.rePassword &&
+      inputs.fullName &&
+      inputs.email &&
+      inputs.phone
+    ) {
+      return setDisable(false);
+    }
+
+    return setDisable(true);
+  }, [inputs, changeLogin]);
+
+  const handleAuth = () => {
+    // const todo = {
+    //   id: Date.now(),
+    //   name: inputs.userName,
+    //   completed: inputs.password,
+    //   priority: "Medium",
+    // };
+    // dispatch(todoListSlice.actions.addTodo(todo));
+    if (changeLogin) {
+      signin({ username: inputs.userName, password: inputs.password });
+    }
+  };
 
   return (
     <div>
@@ -116,7 +158,11 @@ export default function AuthModal({ isLogin }: { isLogin: boolean }) {
               </div>
             ))}
 
-          <button className="text-white bg-[#FF2423] uppercase w-full px-4 py-[5px] my-4">
+          <button
+            className="text-white bg-[#FF2423] uppercase w-full px-4 py-[5px] my-4 disabled:bg-gray-500"
+            onClick={handleAuth}
+            disabled={disable}
+          >
             {changeLogin
               ? "đăng nhập"
               : forgotPass

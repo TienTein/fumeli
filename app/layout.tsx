@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import logo from "../public/images/logoFUMELI 1.png";
+import { ReduxProvider } from "./redux/ReduxProvider";
 
 export const metadata = {
   title: "Fumeli App",
@@ -23,13 +24,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <main
-          className={`bg-[#19181C] min-h-screen w-screen ${roboto.className} overflow-hidden`}
-        >
-          <Header />
-          {children}
-          <Footer />
-        </main>
+        <ReduxProvider>
+          <main
+            className={`bg-[#19181C] min-h-screen w-screen ${roboto.className} overflow-hidden`}
+          >
+            <Header />
+            {children}
+            <Footer />
+          </main>
+        </ReduxProvider>
       </body>
     </html>
   );
