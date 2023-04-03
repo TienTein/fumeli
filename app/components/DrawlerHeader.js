@@ -99,7 +99,7 @@ export default function DrawlerHeader() {
           </Link>
 
           <Link
-            href="#"
+            href="/contact"
             className={`block  ${
               pathname === "/contact"
                 ? "border-b-2 border-[#FF2423] text-[#FF2423]"
@@ -108,9 +108,6 @@ export default function DrawlerHeader() {
             aria-current="page"
             onClick={() => setOpenDrawer(false)}
           >
-            Liên hệ
-          </Link>
-          <Link href="/contact" aria-current="page">
             Liên hệ
           </Link>
 

@@ -150,7 +150,10 @@ export default function AuthModal() {
                   <input type="checkbox" onChange={handleChangeInput} />
                   <p>
                     Tôi xác nhận rằng tôi trên 18 tuổi và đồng ý với các
-                    <Link href="#" className="text-[#FF2423] font-bold ml-2">
+                    <Link
+                      href="/term"
+                      className="text-[#FF2423] font-bold ml-2"
+                    >
                       Điều khoản & Điều kiện!
                     </Link>
                   </p>
