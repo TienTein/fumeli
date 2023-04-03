@@ -1,0 +1,14 @@
+.leaflet-container {
+    .leaflet-map-pane {
+        .leaflet-marker-pane {
+            img {
+                display: none;
+            }
+        }
+        .leaflet-shadow-pane {
+            img {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,7 +1,11 @@
+import IntroContext from "./IntroContext";
+import IntroPartner from "./IntroPartner";
+
 export default function Introduction() {
   return (
-    <div>
-      <h1>ABC</h1>
+    <div className="w-full text-white ">
+      <IntroContext />
+      <IntroPartner />
     </div>
   );
 }

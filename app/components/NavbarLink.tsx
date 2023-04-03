@@ -95,8 +95,12 @@ export default function NavbarLink({ isMatchLG }: { isMatchLG: boolean }) {
           Đổi quà
         </Link>
         <Link
-          href="#"
-          className="block py-2 pl-3 pr-4 text-white"
+          href="/contact"
+          className={`block py-2 pl-3 pr-4  ${
+            pathname === "/contact"
+              ? "border-b-2 border-[#FF2423] text-[#FF2423]"
+              : "text-white"
+          } `}
           aria-current="page"
         >
           Liên hệ
