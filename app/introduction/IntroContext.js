@@ -1,8 +1,14 @@
+"use client";
 import Image from "next/image";
 import contextBg from "../../public/images/another/introbg.png";
 import bg from "../../public/images/bg-top 1.png";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 export default function IntroContext() {
+  const theme = useTheme();
+  const isMatchMD = useMediaQuery(theme.breakpoints.down("md"));
+  const isMatchLG = useMediaQuery(theme.breakpoints.down("lg"));
+
   return (
     <div className="mx-auto z-10 relative py-[10vh] px-[10vw]">
       <Image
@@ -14,7 +20,11 @@ export default function IntroContext() {
         GIỚI THIỆU VỀ DỰ ÁN <span className="text-[#FF2423]">FUMELI</span>
       </h1>
 
-      <div className="flex w-full gap-8 my-10">
+      <div
+        className={`flex w-full gap-8 my-10 ${
+          isMatchLG ? "flex-col items-center" : ""
+        }`}
+      >
         <Image
           src={contextBg}
           alt=""
@@ -62,20 +72,26 @@ export default function IntroContext() {
         </div>
       </div>
       {/* end context */}
-      <div className="flex rounded-md bg-black border-[1px] border-white w-[50%] mx-auto justify-around p-[20px] [&>*]:flex-col [&>*]:w-fit [&>*]:items-center [&>*>span]:font-bold [&>*>span]:text-3xl [&>*>span]:mb-2">
-        <div className="flex ">
+      <div
+        className={`rounded-md bg-black border-[1px] border-white  mx-auto p-[20px] [&>*]:flex-col [&>*]:w-fit [&>*>span]:font-bold [&>*>span]:text-3xl [&>*>span]:mb-2 [&>*]:flex [&>*]:items-center ${
+          isMatchMD
+            ? "grid grid-cols-2 [&>*]:w-full [&>*]:my-2 w-[80%]"
+            : "flex justify-around w-[50%]"
+        }`}
+      >
+        <div>
           <span>70%</span>
           <p>ACCURACY</p>
         </div>
-        <div className="flex">
+        <div>
           <span>68%</span>
           <p>GAMES</p>
         </div>
-        <div className="flex">
+        <div>
           <span>91%</span>
           <p>CLIENTS</p>
         </div>
-        <div className="flex">
+        <div>
           <span>59%</span>
           <p>AWARDS</p>
         </div>
