@@ -72,35 +72,6 @@ export default function AuthModalInputs({
                 />
               )}
             </div>
-            <input
-              type="text"
-              placeholder="Họ và tên"
-              value={inputs.fullName}
-              onChange={handleChangeInput}
-              name="fullName"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={inputs.email}
-              onChange={handleChangeInput}
-              name="email"
-            />
-            <input
-              type="text"
-              placeholder="Số điện thoại"
-              value={inputs.phone}
-              onChange={handleChangeInput}
-              name="phone"
-            />
-            <input
-              type="text"
-              placeholder="mã giới thiệu"
-              className="bg-[#F0F0F0]"
-              value={inputs.referralCode}
-              onChange={handleChangeInput}
-              name="referralCode"
-            />
           </>
         ) : forgotPass ? (
           <>

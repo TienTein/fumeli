@@ -31,21 +31,25 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export default createSlice({
-  name: "filter",
+  name: "auth",
   initialState: {
-    search: "",
-    status: "All",
-    priority: [],
+    loading: false,
+    data: null,
+    error: null,
   },
   reducers: {
-    searchFilterChange: (state, action) => {
-      state.search = action.payload;
+    setUserLoading: (state) => {
+      state.loading = true;
     },
-    statusFilterChange: (state, action) => {
-      state.search = action.payload;
+    setUserSuccess: (state, action) => {
+      state.loading = false;
+      state.data = action.payload;
+      state.error = null;
     },
-    prioritiesFilterChange: (state, action) => {
-      state.priorities = action.payload;
+    setUserFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+      state.data = null;
     },
   },
 });

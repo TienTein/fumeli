@@ -57,7 +57,12 @@ export default function NavbarLink({ isMatchLG }: { isMatchLG: boolean }) {
           Nhiệm vụ
         </Button>
 
-        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+        <Menu
+          anchorEl={anchorEl}
+          open={open}
+          onClose={handleClose}
+          disableScrollLock={true}
+        >
           <MenuItem className="hover:text-[#FF2423]" onClick={handleClose}>
             Điểm danh hàng ngày
           </MenuItem>

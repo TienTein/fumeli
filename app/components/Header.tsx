@@ -113,7 +113,18 @@ const Header = () => {
                 </div>
                 {selectedItem}
               </Button>
-              <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                disableScrollLock={true}
+                PaperProps={{
+                  style: {
+                    width: anchorEl ? anchorEl.clientWidth : undefined,
+                  },
+                }}
+                className="w-[500px]"
+              >
                 <MenuItem
                   onClick={(event) =>
                     handleMenuItemClick(
