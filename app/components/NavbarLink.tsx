@@ -61,15 +61,21 @@ export default function NavbarLink({ isMatchLG }: { isMatchLG: boolean }) {
 
           {showMenu && (
             <ul
-              className="absolute top-[100%] rounded-md left-0 z-10 bg-white text-black [&>*]:cursor-pointer w-48 [&>*]:py-2 [&>*]:pl-3 [&>*]:pr-4"
+              className="absolute top-[100%] rounded-md left-0 z-10 bg-white text-black [&>*]:cursor-pointer w-48 [&>*]:py-2 [&>*]:pl-3 [&>*]:pr-4 [&>*]:block"
               ref={menuRef}
             >
-              <li className="hover:text-[#FF2423] hover:bg-[#F5F5F5] rounded-t-md">
+              <Link
+                href="/mission/dailymission"
+                className="hover:text-[#FF2423] hover:bg-[#F5F5F5] rounded-t-md"
+              >
                 Điểm danh hàng ngày
-              </li>
-              <li className="hover:text-[#FF2423] hover:bg-[#F5F5F5] rounded-b-md">
+              </Link>
+              <Link
+                href="#"
+                className="hover:text-[#FF2423] hover:bg-[#F5F5F5] rounded-b-md"
+              >
                 Mời bạn nhận quà
-              </li>
+              </Link>
             </ul>
           )}
         </div>

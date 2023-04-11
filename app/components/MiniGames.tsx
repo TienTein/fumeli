@@ -115,7 +115,7 @@ export default function MiniGames() {
           </div>
         )}
 
-        <GLPagination pages={pages} setPage={setPage} />
+        <GLPagination pageCount={pages} setPage={setPage} />
       </div>
     </div>
   );

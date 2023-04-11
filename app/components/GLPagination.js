@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Pagination, PaginationItem } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const GLPagination = ({ pageCount, setPage }) => {
+  console.log(pageCount);
   const classes = useStyles();
   const handlePageChange = (e, page) => {
     // console.log("page", page);

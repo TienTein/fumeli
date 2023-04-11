@@ -9,7 +9,6 @@ export default function Videos() {
   const pathname = usePathname();
   const theme = useTheme();
   const isMatchMD = useMediaQuery(theme.breakpoints.down("md"));
-  console.log(pathname);
 
   return (
     <div className="w-screen h-fit relative text-white videos">
