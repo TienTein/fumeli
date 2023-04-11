@@ -1,13 +1,13 @@
 import Image from "next/image";
-import contextBg from "../../public/images/another/partnerBg.png";
-import partner1 from "../../public/images/another/introductcustomer1.png";
-import partner2 from "../../public/images/another/introductcustomer2.png";
-import partner3 from "../../public/images/another/introductcustomer3.png";
-import partner4 from "../../public/images/another/introductcustomer4.png";
-import partner5 from "../../public/images/another/introductcustomer5.png";
-import partner6 from "../../public/images/another/introductcustomer6.png";
-import partner7 from "../../public/images/another/introductcustomer7.png";
-import partner8 from "../../public/images/another/introductcustomer8.png";
+import contextBg from "@/public/images/another/partnerBg.png";
+import partner1 from "@/public/images/another/introductcustomer1.png";
+import partner2 from "@/public/images/another/introductcustomer2.png";
+import partner3 from "@/public/images/another/introductcustomer3.png";
+import partner4 from "@/public/images/another/introductcustomer4.png";
+import partner5 from "@/public/images/another/introductcustomer5.png";
+import partner6 from "@/public/images/another/introductcustomer6.png";
+import partner7 from "@/public/images/another/introductcustomer7.png";
+import partner8 from "@/public/images/another/introductcustomer8.png";
 
 export default function IntroPartner() {
   return (

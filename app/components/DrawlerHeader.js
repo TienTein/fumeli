@@ -51,7 +51,7 @@ export default function DrawlerHeader() {
           </button>
 
           {openMissionMenu ? (
-            <div className="pl-[10vh] [&>*]:border-b-[#8B8B8B] [&>*]:border-b-[1px]  [&>*]:w-full [&>*]:py-[5px] border-none">
+            <div className="pl-[3vh] [&>*]:border-b-[#8B8B8B] [&>*]:border-b-[1px]  [&>*]:w-full [&>*]:py-[5px] border-none">
               <Link
                 href="#"
                 className="block"

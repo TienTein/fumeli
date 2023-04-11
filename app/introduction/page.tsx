@@ -1,5 +1,5 @@
-import IntroContext from "./IntroContext";
-import IntroPartner from "./IntroPartner";
+import IntroContext from "./components/IntroContext";
+import IntroPartner from "./components/IntroPartner";
 
 export default function Introduction() {
   return (

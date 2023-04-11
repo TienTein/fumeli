@@ -4,16 +4,6 @@ import React from "react";
 import { Pagination, PaginationItem } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 
-// const useStyles = makeStyles((theme) => ({
-//   selected: {
-//     backgroundColor: "transparent",
-//     color: "#ffffff",
-//     border: "solid 1px #FF2423",
-//     borderBottom: "solid 4px #FF2423",
-//     borderRadius: "unset",
-//   },
-// }));
-
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiPaginationItem-root": {
@@ -31,27 +21,22 @@ const useStyles = makeStyles((theme) => ({
       border: "solid 1px #FF2423",
       borderBottom: "solid 4px #FF2423",
       borderRadius: "unset",
-      "&:hover": {
-        backgroundColor: "#FF2423",
-        border: "solid 1px #fff",
-        borderBottom: "solid 1px #fff",
-      },
     },
   },
 }));
 
-const GLPagination = ({ pages, setPage }) => {
+const GLPagination = ({ pageCount, setPage }) => {
   const classes = useStyles();
-  const handlePageChange = ({ e, page }) => {
-    console.log("page", page);
-    console.log("pages", pages);
+  const handlePageChange = (e, page) => {
+    // console.log("page", page);
+    // console.log("pages", pageCount);
     setPage(page);
   };
 
   return (
     <div className="my-4 flex items-center justify-center">
       <Pagination
-        count={pages}
+        count={pageCount}
         onChange={handlePageChange}
         className={classes.root}
         variant="outlined"

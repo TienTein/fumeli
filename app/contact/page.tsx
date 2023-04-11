@@ -1,5 +1,5 @@
-import GoogleStreetMap from "./GoogleStreetMap";
-import ContactForm from "./ContactForm";
+import GoogleStreetMap from "./components/GoogleStreetMap";
+import ContactForm from "./components/ContactForm";
 
 export default function Contact() {
   return (

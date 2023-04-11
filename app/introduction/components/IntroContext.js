@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
-import contextBg from "../../public/images/another/introbg.png";
-import bg from "../../public/images/bg-top 1.png";
+import contextBg from "@/public/images/another/introbg.png";
+import bg from "@/public/images/bg-top 1.png";
 import { useMediaQuery, useTheme } from "@mui/material";
 
 export default function IntroContext() {

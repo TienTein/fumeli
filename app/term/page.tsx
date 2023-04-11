@@ -17,7 +17,7 @@ export default function TeamAndConditions() {
           kể từ thời điểm chúng được xuất bản. Bạn nên dành thời gian để kiểm
           tra định kỳ các bản cập nhật trên các nền tảng của chúng tôi.
         </p>
-        <span>1. Chấp nhận “Thỏa thuận”</span>{" "}
+        <span>1. Chấp nhận “Thỏa thuận”</span>
         <p>
           Bạn đồng ý với các Điều khoản & điều kiện được nêu trong Thỏa thuận sử
           dụng này đối với trang của chúng tôi, esports.oeg.vn. Thỏa thuận này
@@ -29,7 +29,7 @@ export default function TeamAndConditions() {
           đăng trên trang web và bạn nên xem lại Thỏa thuận này trước khi sử
           dụng Trang.
         </p>
-        <span>2. Đăng ký và hủy đăng ký</span>{" "}
+        <span>2. Đăng ký và hủy đăng ký</span>
         <p>
           Bạn phải đảm bảo rằng các dữ liệu do bạn cung cấp khi đăng ký hoặc bất
           cứ thông tin nào là chính xác và đầy đủ. Bạn phải thông báo cho chúng
@@ -44,7 +44,7 @@ export default function TeamAndConditions() {
           trang web ngay lập tức. Việc hủy bỏ hoặc đình chỉ đăng ký của bạn
           không ảnh hưởng đến bất kỳ quyền theo luật định nào.
         </p>
-        <span>3. Bình luận</span>{" "}
+        <span>3. Bình luận</span>
         <p>
           OEG Esports cho phép người dùng bình luận và/hoặc thảo luận về nội
           dung trên website. Khi đăng nhận xét hay bình luận điều đó có nghĩa là

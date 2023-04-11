@@ -202,7 +202,8 @@ export default function AuthModal() {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        disableScrollLock={true}
+        disableScrollLock
+        disablePortal
       >
         <Box sx={style}>
           {user.loading ? (

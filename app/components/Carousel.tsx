@@ -1,4 +1,3 @@
-import Image from "next/image";
 import CarouselItems from "./CarouselItems";
 import "../styles/CarouselItems.scss";
 

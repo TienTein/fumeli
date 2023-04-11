@@ -51,8 +51,6 @@ export default function TopRank() {
 
   const topDatas = datas.sort((a, b) => b.point - a.point).slice(0, 6);
 
-  console.log(show);
-
   return (
     <div
       className={`fixed ${

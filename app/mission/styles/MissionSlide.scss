@@ -1,0 +1,19 @@
+.mission-page {
+    .arrow {
+        position: absolute;
+        z-index: 10;
+        bottom: 10%;
+        width: fit-content;
+        cursor: pointer;
+        & > * {
+            width: 35px;
+            height: 50px;
+        }
+        &.next-arrow {
+            right: 7rem;
+        }
+        &.prev-arrow {
+            right: 10rem;
+        }
+    }
+}

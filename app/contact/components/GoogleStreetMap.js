@@ -4,7 +4,7 @@ import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import "leaflet/dist/leaflet.css";
-import "./styles/map.scss";
+import "../styles/map.scss";
 
 const GoogleStreetMap = () => {
   return (
