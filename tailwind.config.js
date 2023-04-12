@@ -7,5 +7,13 @@ module.exports = {
       container: "86vh",
     },
   },
-  plugins: [],
+  plugins: [require("tailwind-scrollbar")],
+  variants: {
+    scrollbar: ["rounded"],
+  },
+  scrollbar: {
+    width: "thin",
+    track: "rounded-full",
+    thumb: "rounded-full",
+  },
 };
