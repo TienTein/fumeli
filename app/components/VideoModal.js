@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 
 const style = {
@@ -23,6 +22,7 @@ export default function VideoModal({ open, handleClose }) {
         aria-describedby="modal-modal-description"
         disableEnforceFocus
         disableScrollLock
+        disablePortal
       >
         <Box sx={style}>
           <div className="w-[70vw]">

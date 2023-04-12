@@ -1,25 +1,30 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
-import Button from "@mui/material/Button";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useState, useRef, useEffect } from "react";
+import { usePathname } from "next/navigation";
 
 export default function NavbarLink({ isMatchLG }: { isMatchLG: boolean }) {
+  const pathname = usePathname();
   const [active, setActive] = useState(false);
-  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [showMenu, setShowMenu] = useState(false);
+  const menuRef = useRef<HTMLUListElement>(null);
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget as HTMLElement);
-    setActive(true);
-  };
+  const toggleMenu = () => setShowMenu(true);
 
-  const handleClose = () => {
-    setAnchorEl(null);
-    setActive(false);
-  };
+  useEffect(() => {
+    const handleOutsideClick = (event: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        setShowMenu(false);
+      }
+    };
+
+    window.addEventListener("mousedown", handleOutsideClick);
+
+    return () => {
+      window.removeEventListener("mousedown", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <div
       className={`flex md:order-2 w-full nav-link  ${
@@ -32,33 +37,48 @@ export default function NavbarLink({ isMatchLG }: { isMatchLG: boolean }) {
         }`}
       >
         <Link
-          href="#"
-          className="block py-2 pl-3 pr-4 text-white"
+          href="/introduction"
+          className={`block py-2 pl-3 pr-4  ${
+            pathname === "/introduction"
+              ? "border-b-2 border-[#FF2423] text-[#FF2423]"
+              : "text-white"
+          } `}
           aria-current="page"
         >
           Giới thiệu
         </Link>
 
-        <Button
-          variant="contained"
-          onClick={handleClick}
-          endIcon={<KeyboardArrowDownIcon />}
-          className={`${
-            active ? "text-[#FF2423]" : ""
-          } hover:bg-transparent [&>span]:m-0 hover:text-[#FF2423]`}
-        >
-          Nhiệm vụ
-        </Button>
+        <div className="relative py-2 pl-3 pr-4">
+          <Link
+            onMouseEnter={toggleMenu}
+            className={`${
+              active ? "text-[#FF2423]" : ""
+            } hover:bg-transparent [&>span]:m-0 hover:text-[#FF2423]`}
+            href="/mission"
+          >
+            Nhiệm vụ
+          </Link>
 
-        <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-          <MenuItem className="hover:text-[#FF2423]" onClick={handleClose}>
-            Điểm danh hàng ngày
-          </MenuItem>
-          <MenuItem className="hover:text-[#FF2423]" onClick={handleClose}>
-            Mời bạn nhận quà
-          </MenuItem>
-        </Menu>
-
+          {showMenu && (
+            <ul
+              className="absolute top-[100%] rounded-md left-0 z-10 bg-white text-black [&>*]:cursor-pointer w-48 [&>*]:py-2 [&>*]:pl-3 [&>*]:pr-4 [&>*]:block"
+              ref={menuRef}
+            >
+              <Link
+                href="/mission/dailymission"
+                className="hover:text-[#FF2423] hover:bg-[#F5F5F5] rounded-t-md"
+              >
+                Điểm danh hàng ngày
+              </Link>
+              <Link
+                href="#"
+                className="hover:text-[#FF2423] hover:bg-[#F5F5F5] rounded-b-md"
+              >
+                Mời bạn nhận quà
+              </Link>
+            </ul>
+          )}
+        </div>
         <Link
           href="#"
           className="block py-2 pl-3 pr-4 text-white"
@@ -88,8 +108,12 @@ export default function NavbarLink({ isMatchLG }: { isMatchLG: boolean }) {
           Đổi quà
         </Link>
         <Link
-          href="#"
-          className="block py-2 pl-3 pr-4 text-white"
+          href="/contact"
+          className={`block py-2 pl-3 pr-4  ${
+            pathname === "/contact"
+              ? "border-b-2 border-[#FF2423] text-[#FF2423]"
+              : "text-white"
+          } `}
           aria-current="page"
         >
           Liên hệ

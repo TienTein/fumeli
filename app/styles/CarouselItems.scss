@@ -8,7 +8,7 @@
         right: 0;
         bottom: 0;
         margin: auto;
-        z-index: 100;
+        z-index: 50;
         .slide {
             pointer-events: none;
             width: 100%;
@@ -28,9 +28,10 @@
 
     .arrow {
         position: absolute;
-        z-index: 100;
+        z-index: 10;
         top: 27%;
         width: fit-content;
+        cursor: pointer;
         & > * {
             width: 35px;
             height: 50px;

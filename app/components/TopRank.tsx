@@ -51,13 +51,11 @@ export default function TopRank() {
 
   const topDatas = datas.sort((a, b) => b.point - a.point).slice(0, 6);
 
-  console.log(show);
-
   return (
     <div
       className={`fixed ${
         show === true ? "top-[20%]" : "top-[50%]"
-      } right-0 text-white z-50 flex flex-col items-end`}
+      } right-0 text-white z-[100] flex flex-col items-end`}
     >
       <button
         className={`w-20 h-7 flex justify-around bg-top-star items-center ${

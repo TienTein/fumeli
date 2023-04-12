@@ -1,11 +1,11 @@
 .videos {
     .slider {
         width: 120%;
-        height: 350px;
+        height: 400px;
         margin-left: -10%;
         .slide {
             width: 140% !important;
-            height: 350px;
+            height: 400px;
             scale: 0.7;
             transition: 0.5s;
             margin-left: -20%;
@@ -45,10 +45,9 @@
 @media (max-width: 900px) {
     .videos {
         .slider {
-            height: 400px;
-
+            height: 500px;
             .slide {
-                height: 400px;
+                height: 500px;
 
                 width: 100% !important;
                 margin: auto;

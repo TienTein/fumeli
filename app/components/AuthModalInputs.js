@@ -1,30 +1,15 @@
 "use client";
 
-import React, { ChangeEvent, useState } from "react";
+import React, { useState } from "react";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
-
-interface Props {
-  inputs: {
-    userName: string;
-    password: string;
-    rePassword: string;
-    fullName: string;
-    email: string;
-    phone: string;
-    referralCode: string;
-  };
-  handleChangeInput: (e: ChangeEvent<HTMLInputElement>) => void;
-  changeLogin: boolean;
-  forgotPass: boolean;
-}
 
 export default function AuthModalInputs({
   inputs,
   handleChangeInput,
   changeLogin,
   forgotPass,
-}: Props) {
+}) {
   const [showPass, setShowPass] = useState(false);
   const [showRePass, setShowRePass] = useState(false);
 
@@ -87,35 +72,6 @@ export default function AuthModalInputs({
                 />
               )}
             </div>
-            <input
-              type="text"
-              placeholder="Họ và tên"
-              value={inputs.fullName}
-              onChange={handleChangeInput}
-              name="fullname"
-            />
-            <input
-              type="email"
-              placeholder="Email"
-              value={inputs.email}
-              onChange={handleChangeInput}
-              name="email"
-            />
-            <input
-              type="text"
-              placeholder="Số điện thoại"
-              value={inputs.phone}
-              onChange={handleChangeInput}
-              name="phone"
-            />
-            <input
-              type="text"
-              placeholder="mã giới thiệu"
-              className="bg-[#F0F0F0]"
-              value={inputs.referralCode}
-              onChange={handleChangeInput}
-              name="referralCode"
-            />
           </>
         ) : forgotPass ? (
           <>

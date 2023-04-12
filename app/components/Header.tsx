@@ -2,6 +2,7 @@
 
 import { useState, isValidElement } from "react";
 import Link from "next/link";
+
 import Image from "next/image";
 import {
   AppBar,
@@ -17,7 +18,6 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import TwitterIcon from "@mui/icons-material/Twitter";
 import StarIcon from "@mui/icons-material/Star";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-
 import DrawlerHeader from "./DrawlerHeader";
 import NavbarLink from "./NavbarLink";
 import AuthModal from "./AuthModal";
@@ -26,7 +26,7 @@ import logo from "../../public/images/logoFUMELI 1.png";
 import bgLogo from "../../public/images/bg_logoFUMELI 3.png";
 import "../styles/Header.scss";
 
-export default function Header() {
+const Header = () => {
   const theme = useTheme();
   const isMatchMD = useMediaQuery(theme.breakpoints.down("md"));
   const isMatchLG = useMediaQuery(theme.breakpoints.down("lg"));
@@ -113,7 +113,18 @@ export default function Header() {
                 </div>
                 {selectedItem}
               </Button>
-              <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+              <Menu
+                anchorEl={anchorEl}
+                open={open}
+                onClose={handleClose}
+                disableScrollLock={true}
+                PaperProps={{
+                  style: {
+                    width: anchorEl ? anchorEl.clientWidth : undefined,
+                  },
+                }}
+                className="w-[500px]"
+              >
                 <MenuItem
                   onClick={(event) =>
                     handleMenuItemClick(
@@ -136,15 +147,24 @@ export default function Header() {
                 </MenuItem>
               </Menu>
 
-              <AuthModal isLogin={true} />
+              <AuthModal />
             </div>
           </div>
 
           <NavbarLink isMatchLG={isMatchLG} />
         </>
       ) : (
-        <DrawlerHeader />
+        <>
+          <Image
+            src={logo}
+            alt=""
+            className="absolute w-[30%] h-[50%] left-0 right-0 top-0 bottom-0 m-auto"
+          />
+          <DrawlerHeader />
+        </>
       )}
     </AppBar>
   );
-}
+};
+
+export default Header;

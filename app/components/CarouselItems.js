@@ -56,7 +56,7 @@ export default function AsNavFor() {
     infinite: true,
     speed: 500,
     slidesToShow: 3,
-    slidesToScroll: 3,
+    slidesToScroll: 1,
     swipeToSlide: true,
     focusOnSelect: true,
     slidesToShow: isMatchMD ? 1 : 3,
